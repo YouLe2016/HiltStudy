@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.hiltstudy.di.DaggerAppComponent
 import com.example.hiltstudy.di.User
+import com.example.hiltstudy.net.HttpUtil
 import com.example.hiltstudy.ui.theme.HiltStudyTheme
 import javax.inject.Inject
 
@@ -24,11 +25,20 @@ class MainActivity : ComponentActivity() {
     // 不能加private, 也就意味着使用set方法注入的成员变量
     lateinit var user: User
 
+    @Inject
+    lateinit var httpUtil: HttpUtil
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         DaggerAppComponent.create().inject(this)
+
+        Log.d(TAG, "onCreate: application=${this.application}")
+        // 旋转屏幕时，下面三个都是新的对象
+        Log.d(TAG, "onCreate: MainActivity=$this")
         Log.d(TAG, "onCreate: user=$user")
+        Log.d(TAG, "onCreate: httpUtil: $httpUtil")
+        httpUtil.introduce()
 
         enableEdgeToEdge()
         setContent {

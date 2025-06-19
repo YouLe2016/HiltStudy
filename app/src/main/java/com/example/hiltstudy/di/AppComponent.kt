@@ -6,7 +6,9 @@ import dagger.Component
 /**
  * 理解为一个IOC容器
  */
-@Component
+@Component(
+    modules = [NetModule::class]
+)
 interface AppComponent {
     fun inject(activity: MainActivity)
 }
