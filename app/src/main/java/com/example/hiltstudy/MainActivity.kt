@@ -1,5 +1,6 @@
 package com.example.hiltstudy
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -35,6 +36,8 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var httpUtil2: HttpUtil
 
+    @Inject
+    lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +53,14 @@ class MainActivity : ComponentActivity() {
         Log.d(TAG, "onCreate: httpUtil2: $httpUtil2")
         Log.d(TAG, "onCreate: user是否是单例=${user == user2}")
         Log.d(TAG, "onCreate: httpUtil是否是单例=${httpUtil == httpUtil2}")
+
+        // 以下都是同一对象
+        Log.d(TAG, "onCreate: -------------application--------------")
+        Log.d(TAG, "onCreate: ProjectApplicationInstance=${ProjectApplicationInstance}")
+        Log.d(TAG, "onCreate: applicationContext=${ProjectApplicationInstance.applicationContext}")
+        Log.d(TAG, "onCreate: context=${this.context}")
+        Log.d(TAG, "onCreate: applicationContext=${this.applicationContext}")
+        Log.d(TAG, "onCreate: -------------application  end--------------")
 
         enableEdgeToEdge()
         setContent {

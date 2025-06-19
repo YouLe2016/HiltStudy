@@ -1,5 +1,6 @@
-package com.example.hiltstudy.di
+package com.example.hiltstudy.di.module
 
+import android.content.Context
 import com.example.hiltstudy.net.HttpClient
 import com.example.hiltstudy.net.HttpUtil
 import dagger.Module
@@ -21,8 +22,8 @@ class NetModule {
     @Provides
     // 配合Component上的@Singleton注解一起使用，指定模块作用域为单例
     @Singleton
-    fun providerHttpUtil(httpClient: HttpClient): HttpUtil {
-        return HttpUtil(httpClient)
+    fun providerHttpUtil(httpClient: HttpClient, context: Context): HttpUtil {
+        return HttpUtil(httpClient, context)
     }
 
     @Provides
