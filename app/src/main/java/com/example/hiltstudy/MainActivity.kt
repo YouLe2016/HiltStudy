@@ -1,18 +1,21 @@
 package com.example.hiltstudy
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.hiltstudy.di.DaggerAppComponent
 import com.example.hiltstudy.di.User
 import com.example.hiltstudy.net.HttpUtil
 import com.example.hiltstudy.ui.theme.HiltStudyTheme
@@ -24,14 +27,19 @@ class MainActivity : ComponentActivity() {
     @Inject
     // 不能加private, 也就意味着使用set方法注入的成员变量
     lateinit var user: User
-
     @Inject
     lateinit var httpUtil: HttpUtil
+
+    @Inject
+    lateinit var user2: User
+    @Inject
+    lateinit var httpUtil2: HttpUtil
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        DaggerAppComponent.create().inject(this)
+        ProjectAppComponent.inject(this)
 
         Log.d(TAG, "onCreate: application=${this.application}")
         // 旋转屏幕时，下面三个都是新的对象
@@ -39,6 +47,9 @@ class MainActivity : ComponentActivity() {
         Log.d(TAG, "onCreate: user=$user")
         Log.d(TAG, "onCreate: httpUtil: $httpUtil")
         httpUtil.introduce()
+        Log.d(TAG, "onCreate: httpUtil2: $httpUtil2")
+        Log.d(TAG, "onCreate: user是否是单例=${user == user2}")
+        Log.d(TAG, "onCreate: httpUtil是否是单例=${httpUtil == httpUtil2}")
 
         enableEdgeToEdge()
         setContent {
@@ -55,11 +66,22 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun Greeting(
+    name: String,
+    modifier: Modifier = Modifier,
+) {
+    val context = LocalContext.current
+    Column {
+        Text(
+            text = "Hello $name!",
+            modifier = modifier
+        )
+        Button(onClick = {
+            context.startActivity(Intent(context, MainActivity2::class.java))
+        }){
+            Text("跳转页面")
+        }
+    }
 }
 
 @Preview(showBackground = true)

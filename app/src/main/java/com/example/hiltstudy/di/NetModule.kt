@@ -5,6 +5,7 @@ import com.example.hiltstudy.net.HttpUtil
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.migration.DisableInstallInCheck
+import javax.inject.Singleton
 
 /**
  * 理解为一个Dagger模块
@@ -18,11 +19,14 @@ import dagger.hilt.migration.DisableInstallInCheck
 @DisableInstallInCheck
 class NetModule {
     @Provides
+    // 配合Component上的@Singleton注解一起使用，指定模块作用域为单例
+    @Singleton
     fun providerHttpUtil(httpClient: HttpClient): HttpUtil {
         return HttpUtil(httpClient)
     }
 
     @Provides
+    @Singleton
     fun providerHttpClient(): HttpClient {
         return HttpClient()
     }
