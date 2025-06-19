@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
+import com.example.hiltstudy.di.User
 import com.example.hiltstudy.net.HttpUtil
 import com.example.hiltstudy.ui.theme.HiltStudyTheme
 import javax.inject.Inject
@@ -19,6 +20,8 @@ private const val TAG = "MainActivity2"
 class MainActivity2 : ComponentActivity() {
     @Inject
     lateinit var httpUtil: HttpUtil
+//    @Inject
+//    lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,7 @@ class MainActivity2 : ComponentActivity() {
 
         ProjectAppComponent.inject(this)
         Log.d(TAG, "onCreate: httpUtil=$httpUtil")
+//        Log.d(TAG, "onCreate: user=$user")
 
         setContent {
             HiltStudyTheme {
