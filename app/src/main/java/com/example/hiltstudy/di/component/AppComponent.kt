@@ -6,7 +6,6 @@ import com.example.hiltstudy.di.module.SubComponentModule
 import com.example.hiltstudy.net.HttpUtil
 import dagger.Component
 import javax.inject.Singleton
-import com.example.hiltstudy.di.module.UserModule
 
 /**
  * 理解为一个IOC容器

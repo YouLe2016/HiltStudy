@@ -4,12 +4,11 @@ import com.example.hiltstudy.di.anno.ActivityScope
 import com.example.hiltstudy.di.bean.User
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.migration.DisableInstallInCheck
 import javax.inject.Named
 
 @Module
-@InstallIn(SingletonComponent::class)
+@DisableInstallInCheck
 class UserModule {
     @Provides
     @ActivityScope

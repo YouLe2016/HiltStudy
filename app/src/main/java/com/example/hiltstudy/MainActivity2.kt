@@ -22,7 +22,14 @@ private const val TAG = "MainActivity2"
 
 class MainActivity2 : ComponentActivity() {
     @Inject
+    @Named("User")
+    lateinit var user: User
+    @Inject
     lateinit var httpUtil: HttpUtil
+
+    @Inject
+    @Named("UserWithName")
+    lateinit var user2: User
     @Inject
     lateinit var httpUtil2: HttpUtil
 
@@ -39,6 +46,9 @@ class MainActivity2 : ComponentActivity() {
             .inject(this)
 
         Log.d(TAG, "onCreate: MainActivity2=$this")
+        Log.d(TAG, "onCreate: user=$user")
+        Log.d(TAG, "onCreate: user2=$user2")
+        Log.d(TAG, "onCreate: user是否是单例=${user == user2}")
         Log.d(TAG, "onCreate: httpUtil: $httpUtil")
         Log.d(TAG, "onCreate: httpUtil是否是单例=${httpUtil == httpUtil2}")
 
