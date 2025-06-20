@@ -43,7 +43,11 @@ class MainActivity : ComponentActivity() {
 //    lateinit var context: Context
 
     @Inject
+    @Named("American")
     lateinit var student: Student
+    @Inject
+    @Named("China")
+    lateinit var student2: Student
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,6 +74,7 @@ class MainActivity : ComponentActivity() {
         Log.d(TAG, "onCreate: -------------application  end--------------")
 
         Log.d(TAG, "onCreate: student=$student")
+        Log.d(TAG, "onCreate: student2=$student2")
 
         enableEdgeToEdge()
         setContent {
