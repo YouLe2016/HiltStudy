@@ -29,12 +29,14 @@ private const val TAG = "MainActivity"
 
 class MainActivity : ComponentActivity() {
     @Inject
+    @Named("User")
     // 不能加private, 也就意味着使用set方法注入的成员变量
     lateinit var user: User
     @Inject
     lateinit var httpUtil: HttpUtil
 
     @Inject
+    @Named("UserWithName")
     lateinit var user2: User
     @Inject
     lateinit var httpUtil2: HttpUtil
@@ -59,10 +61,11 @@ class MainActivity : ComponentActivity() {
         // 旋转屏幕时，下面三个都是新的对象
         Log.d(TAG, "onCreate: MainActivity=$this")
         Log.d(TAG, "onCreate: user=$user")
+        Log.d(TAG, "onCreate: user2=$user2")
+        Log.d(TAG, "onCreate: user是否是单例=${user == user2}")
         Log.d(TAG, "onCreate: httpUtil: $httpUtil")
         httpUtil.introduce()
         Log.d(TAG, "onCreate: httpUtil2: $httpUtil2")
-        Log.d(TAG, "onCreate: user是否是单例=${user == user2}")
         Log.d(TAG, "onCreate: httpUtil是否是单例=${httpUtil == httpUtil2}")
 
         // 以下都是同一对象
