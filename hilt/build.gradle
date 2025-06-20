@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.hiltstudy'
+    namespace 'com.example.hilt'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.example.hiltstudy"
+        applicationId "com.example.hilt"
         minSdk 28
         targetSdk 35
         versionCode 1
