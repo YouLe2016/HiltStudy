@@ -9,7 +9,7 @@ import javax.inject.Named
 
 @Module
 @DisableInstallInCheck
-class UserModule {
+object UserModule {
     @Provides
     @ActivityScope
     @Named("User")

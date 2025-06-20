@@ -18,7 +18,7 @@ import javax.inject.Singleton
 
 // 通过在模块上添加注解来在模块级别禁用检查
 @DisableInstallInCheck
-class NetModule {
+object NetModule {
     @Provides
     // 配合Component上的@Singleton注解一起使用，指定模块作用域为单例
     @Singleton

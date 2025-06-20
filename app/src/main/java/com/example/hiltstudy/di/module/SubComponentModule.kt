@@ -10,4 +10,4 @@ import dagger.hilt.migration.DisableInstallInCheck
     ]
 )
 @DisableInstallInCheck
-class SubComponentModule
+object SubComponentModule
