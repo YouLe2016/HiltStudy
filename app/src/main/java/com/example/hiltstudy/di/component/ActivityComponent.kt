@@ -2,7 +2,7 @@ package com.example.hiltstudy.di.component
 
 import com.example.hiltstudy.MainActivity
 import com.example.hiltstudy.di.anno.ActivityScope
-import com.example.hiltstudy.di.module.StudentModule
+import com.example.hiltstudy.di.module.student.StudentModule
 import com.example.hiltstudy.di.module.UserModule
 import dagger.Component
 

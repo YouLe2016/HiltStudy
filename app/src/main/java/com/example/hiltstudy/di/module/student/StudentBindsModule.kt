@@ -1,4 +1,4 @@
-package com.example.hiltstudy.di.module
+package com.example.hiltstudy.di.module.student
 
 import com.example.hiltstudy.di.bean.student.AmericanStudent
 import com.example.hiltstudy.di.bean.student.ChinaStudent
@@ -10,12 +10,12 @@ import javax.inject.Named
 
 @Module
 @DisableInstallInCheck
-abstract class StudentModule {
+interface StudentBindsModule {
     @Binds
     @Named("American")
-    abstract fun bindAmericanStudent(student: AmericanStudent): Student
+    fun bindAmericanStudent(student: AmericanStudent): Student
 
     @Binds
     @Named("China")
-    abstract fun bindChinaStudent(student: ChinaStudent): Student
+    fun bindChinaStudent(student: ChinaStudent): Student
 }
