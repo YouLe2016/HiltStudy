@@ -20,7 +20,19 @@ class UserModule {
     @Provides
     @ActivityScope
     @Named("UserWithName")
-    fun provideUserWithName(): User {
-        return User(name = "自定义名字")
+    fun provideUserWithName(@Named("custom") name: String): User {
+        return User(name = name)
+    }
+
+    @Provides
+    @Named("custom")
+    fun provideName(): String {
+        return "自定义名字"
+    }
+
+    @Provides
+    @Named("libai")
+    fun provideLiBaiName(): String {
+        return "李白"
     }
 }
