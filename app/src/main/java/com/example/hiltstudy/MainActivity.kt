@@ -17,11 +17,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.hiltstudy.di.User
+import com.example.hiltstudy.di.bean.User
+import com.example.hiltstudy.di.bean.student.Student
 import com.example.hiltstudy.di.creator.ActivityComponentCreator
 import com.example.hiltstudy.net.HttpUtil
 import com.example.hiltstudy.ui.theme.HiltStudyTheme
 import javax.inject.Inject
+import javax.inject.Named
 
 private const val TAG = "MainActivity"
 
@@ -39,6 +41,10 @@ class MainActivity : ComponentActivity() {
 
 //    @Inject
 //    lateinit var context: Context
+
+    @Inject
+    lateinit var student: Student
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +68,8 @@ class MainActivity : ComponentActivity() {
 //        Log.d(TAG, "onCreate: context=${context}")
         Log.d(TAG, "onCreate: applicationContext=${this.applicationContext}")
         Log.d(TAG, "onCreate: -------------application  end--------------")
+
+        Log.d(TAG, "onCreate: student=$student")
 
         enableEdgeToEdge()
         setContent {

@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
-import com.example.hiltstudy.di.User
+import com.example.hiltstudy.di.bean.User
 import com.example.hiltstudy.di.creator.AppComponentCreator
 import com.example.hiltstudy.net.HttpUtil
 import com.example.hiltstudy.ui.theme.HiltStudyTheme
