@@ -37,8 +37,8 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var httpUtil2: HttpUtil
 
-    @Inject
-    lateinit var context: Context
+//    @Inject
+//    lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
         Log.d(TAG, "onCreate: -------------application--------------")
         Log.d(TAG, "onCreate: ProjectApplicationInstance=${ProjectApplicationInstance}")
         Log.d(TAG, "onCreate: applicationContext=${ProjectApplicationInstance.applicationContext}")
-        Log.d(TAG, "onCreate: context=${context}")
+//        Log.d(TAG, "onCreate: context=${context}")
         Log.d(TAG, "onCreate: applicationContext=${this.applicationContext}")
         Log.d(TAG, "onCreate: -------------application  end--------------")
 
