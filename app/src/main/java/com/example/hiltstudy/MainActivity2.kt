@@ -11,7 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import com.example.hiltstudy.di.User
-import com.example.hiltstudy.di.component.DaggerActivityComponent
+import com.example.hiltstudy.di.creator.ActivityComponentCreator
 import com.example.hiltstudy.net.HttpUtil
 import com.example.hiltstudy.ui.theme.HiltStudyTheme
 import javax.inject.Inject
@@ -28,11 +28,7 @@ class MainActivity2 : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // ProjectAppComponent.inject(this)
-        DaggerActivityComponent.builder()
-            .appComponent(ProjectAppComponent)
-            .build()
-            .inject(this)
+        ActivityComponentCreator.create().inject(this)
 
         Log.d(TAG, "onCreate: httpUtil=$httpUtil")
         Log.d(TAG, "onCreate: user=$user")

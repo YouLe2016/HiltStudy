@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.hiltstudy.di.User
-import com.example.hiltstudy.di.component.DaggerActivityComponent
+import com.example.hiltstudy.di.creator.ActivityComponentCreator
 import com.example.hiltstudy.net.HttpUtil
 import com.example.hiltstudy.ui.theme.HiltStudyTheme
 import javax.inject.Inject
@@ -43,11 +43,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // ProjectAppComponent.inject(this)
-        DaggerActivityComponent.builder()
-            .appComponent(ProjectAppComponent)
-            .build()
-            .inject(this)
+        ActivityComponentCreator.create().inject(this)
 
         Log.d(TAG, "onCreate: application=${this.application}")
         // 旋转屏幕时，下面三个都是新的对象
