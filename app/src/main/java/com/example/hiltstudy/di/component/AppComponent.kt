@@ -1,9 +1,9 @@
 package com.example.hiltstudy.di.component
 
-import com.example.hiltstudy.MainActivity
-import com.example.hiltstudy.MainActivity2
+import android.content.Context
 import com.example.hiltstudy.di.module.NetModule
 import com.example.hiltstudy.di.module.ProjectModule
+import com.example.hiltstudy.net.HttpUtil
 import dagger.Component
 import javax.inject.Singleton
 
@@ -15,6 +15,7 @@ import javax.inject.Singleton
 )
 @Singleton
 interface AppComponent {
-//    fun inject(activity: MainActivity)
-    fun inject(activity: MainActivity2)
+    fun findHttpUtil(): HttpUtil
+
+    fun findContext(): Context
 }

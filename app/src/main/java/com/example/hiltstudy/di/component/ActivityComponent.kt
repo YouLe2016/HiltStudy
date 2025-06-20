@@ -5,9 +5,11 @@ import com.example.hiltstudy.MainActivity2
 import com.example.hiltstudy.di.anno.MyScope
 import dagger.Component
 
-@Component
+@Component(
+    dependencies = [AppComponent::class]
+)
 @MyScope
 interface ActivityComponent {
     fun inject(activity: MainActivity)
-//    fun inject(activity: MainActivity2)
+    fun inject(activity: MainActivity2)
 }

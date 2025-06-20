@@ -29,38 +29,41 @@ class MainActivity : ComponentActivity() {
     @Inject
     // 不能加private, 也就意味着使用set方法注入的成员变量
     lateinit var user: User
-//    @Inject
-//    lateinit var httpUtil: HttpUtil
+    @Inject
+    lateinit var httpUtil: HttpUtil
 
     @Inject
     lateinit var user2: User
-//    @Inject
-//    lateinit var httpUtil2: HttpUtil
+    @Inject
+    lateinit var httpUtil2: HttpUtil
 
-//    @Inject
-//    lateinit var context: Context
+    @Inject
+    lateinit var context: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // ProjectAppComponent.inject(this)
-        DaggerActivityComponent.create().inject(this)
+        DaggerActivityComponent.builder()
+            .appComponent(ProjectAppComponent)
+            .build()
+            .inject(this)
 
         Log.d(TAG, "onCreate: application=${this.application}")
         // 旋转屏幕时，下面三个都是新的对象
         Log.d(TAG, "onCreate: MainActivity=$this")
         Log.d(TAG, "onCreate: user=$user")
-//        Log.d(TAG, "onCreate: httpUtil: $httpUtil")
-//        httpUtil.introduce()
-//        Log.d(TAG, "onCreate: httpUtil2: $httpUtil2")
+        Log.d(TAG, "onCreate: httpUtil: $httpUtil")
+        httpUtil.introduce()
+        Log.d(TAG, "onCreate: httpUtil2: $httpUtil2")
         Log.d(TAG, "onCreate: user是否是单例=${user == user2}")
-//        Log.d(TAG, "onCreate: httpUtil是否是单例=${httpUtil == httpUtil2}")
+        Log.d(TAG, "onCreate: httpUtil是否是单例=${httpUtil == httpUtil2}")
 
         // 以下都是同一对象
         Log.d(TAG, "onCreate: -------------application--------------")
         Log.d(TAG, "onCreate: ProjectApplicationInstance=${ProjectApplicationInstance}")
         Log.d(TAG, "onCreate: applicationContext=${ProjectApplicationInstance.applicationContext}")
-//        Log.d(TAG, "onCreate: context=${this.context}")
+        Log.d(TAG, "onCreate: context=${context}")
         Log.d(TAG, "onCreate: applicationContext=${this.applicationContext}")
         Log.d(TAG, "onCreate: -------------application  end--------------")
 
