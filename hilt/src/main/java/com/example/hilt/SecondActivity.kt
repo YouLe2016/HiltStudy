@@ -1,5 +1,6 @@
 package com.example.hilt
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -7,7 +8,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
@@ -17,11 +17,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class SecondActivity : ComponentActivity() {
     @Inject
     lateinit var user: User
-    @Inject
-    lateinit var user2: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,17 +33,15 @@ class MainActivity : ComponentActivity() {
                         Text(
                             text = user.toString()
                         )
-                        Text(
-                            text = "$user2 ${user == user2}"
-                        )
-                        Button(onClick = {
-                            startActivity(SecondActivity.newIntent(this@MainActivity))
-                        }) {
-                            Text("跳转")
-                        }
                     }
                 }
             }
+        }
+    }
+
+    companion object {
+        fun newIntent(activity: ComponentActivity): Intent {
+            return Intent(activity, SecondActivity::class.java)
         }
     }
 }

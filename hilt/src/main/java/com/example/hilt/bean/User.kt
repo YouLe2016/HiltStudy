@@ -2,7 +2,7 @@ package com.example.hilt.bean
 
 import javax.inject.Inject
 
-data class User(
+class User(
     val name: String
 ) {
     @Inject

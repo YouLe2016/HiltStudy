@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">hilt</string>
+    <string name="second_activity">second_activity</string>
 </resources>
