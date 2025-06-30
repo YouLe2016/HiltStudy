@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import com.example.hilt.bean.User
 import com.example.hilt.ui.theme.HiltStudyTheme
+import com.example.hilt.viewmodel.Main2ViewModel
 import com.example.hilt.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -25,8 +26,9 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var user2: User
 
-    @Inject
-    lateinit var viewModel: MainViewModel
+//    @Inject
+//    lateinit var viewModel: MainViewModel
+    val viewModel2: Main2ViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -52,6 +54,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        viewModel.introduction()
+//        viewModel.introduction()
+        viewModel2.introduction()
     }
 }
