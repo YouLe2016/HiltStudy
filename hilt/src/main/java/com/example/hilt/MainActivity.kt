@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -13,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import com.example.hilt.bean.User
 import com.example.hilt.ui.theme.HiltStudyTheme
+import com.example.hilt.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -22,6 +24,9 @@ class MainActivity : ComponentActivity() {
     lateinit var user: User
     @Inject
     lateinit var user2: User
+
+    @Inject
+    lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,5 +52,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        viewModel.introduction()
     }
 }
