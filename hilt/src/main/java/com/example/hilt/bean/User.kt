@@ -5,6 +5,6 @@ import javax.inject.Inject
 class User(
     val name: String
 ) {
-    @Inject
+//    @Inject
     constructor() : this("user")
 }
