@@ -22,8 +22,8 @@ class SecondActivity : ComponentActivity() {
     lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        super.onCreate(savedInstanceState)
         setContent {
             HiltStudyTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
