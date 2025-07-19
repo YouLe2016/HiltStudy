@@ -2,11 +2,11 @@ package com.wyl.kotlinstudy.delegate.test02
 
 import kotlin.reflect.KProperty
 
-class Example {
+private class Example {
     var property: String by Delegate()
 }
 
-class Delegate {
+private class Delegate {
     operator fun getValue(thisRef: Any?, property: KProperty<*>): String {
         return "$thisRef, 感谢你将 '${property.name}' 委托给我!"
     }
